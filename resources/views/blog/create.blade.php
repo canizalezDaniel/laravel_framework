@@ -1,29 +1,52 @@
-@extends('layouts.template')
+@extends('layouts.admin')
 @section('content')
-    <h1>Create Book</h1>
-    {!! Form::open(['url' => 'books']) !!}
+    <h1>Crear nuevo articulo</h1>
+    {!! Form::open(['files'=>true, 'url' => 'blog']) !!}
+   
     <div class="form-group">
-        {!! Form::label('ISBN', 'ISBN:') !!}
-        {!! Form::text('isbn',null,['class'=>'form-control']) !!}
+        {!! Form::label('Titulo', 'Titulo:') !!}
+        {!! Form::text('titulo',null,['class'=>'form-control']) !!}
     </div>
     <div class="form-group">
-        {!! Form::label('Title', 'Title:') !!}
-        {!! Form::text('title',null,['class'=>'form-control']) !!}
+        {!! Form::label('Autor', 'Autor:') !!}
+        {!! Form::text('autor',null,['class'=>'form-control']) !!}
     </div>
     <div class="form-group">
-        {!! Form::label('Author', 'Author:') !!}
-        {!! Form::text('author',null,['class'=>'form-control']) !!}
+        {!! Form::label('Contenido', 'Contenido:') !!}
+        {!! Form::textarea('contenido', null, ['class'=>'form-control', 'maxlength' => '110 ', 'size' => '30x5']) !!}
+    </div>
+   
+ 
+    <div class="form-group">
+    {!! Form::label('Fecha', 'Fecha:') !!}
+      <div class='input-group date' id='datetimepicker1'>
+        
+        {!! Form::text('fechaPublicado',null, ['id'=>'datepicker','class'=>'form-control']) !!}
+         <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+        </div>
     </div>
     <div class="form-group">
-        {!! Form::label('Publisher', 'Publisher:') !!}
-        {!! Form::text('publisher',null,['class'=>'form-control']) !!}
+        {!! Form::label('Publicado', 'Publicado:') !!}
+      
+        {!! Form::select('publicado', [
+               '0' => 'NO',
+               '1' => 'SI'
+               ], null,  ['class' => 'form-control']
+            ) !!}
     </div>
     <div class="form-group">
         {!! Form::label('Image', 'Image:') !!}
-        {!! Form::text('image',null,['class'=>'form-control']) !!}
+        {!! Form::file('imagen', null, ['class'=>'form-control']) !!}
+
     </div>
+         
+
+     
     <div class="form-group">
         {!! Form::submit('Save', ['class' => 'btn btn-primary form-control']) !!}
     </div>
     {!! Form::close() !!}
+       @include('errors.listado') 
 @stop

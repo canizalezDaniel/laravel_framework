@@ -4,6 +4,8 @@
 @section('content')
 
 <h1>Blog Site</h1>
+
+<p><a class="btn btn-small btn-info" id="activar" href="{{url('blog/create')}}">Nuevo Articulo</a></p>
 <table class="table table-striped table-bordered table-hover"  >
 					    <thead>
 					        <tr>
@@ -17,12 +19,13 @@
 					    </thead>
 					    <tbody>
 					    
+					    @foreach ($articulos as $articulo)
 					        <tr>
 					          
 					            
-					            <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi sunt natus nam..</td>
-					            <td>Daniel Canizalez</td>
-					            <td>01/06/2015</td>
+					            <td>{{$articulo->titulo}}</td>
+					            <td>{{$articulo->autor}}</td>
+					            <td>{{$articulo->fechaPublicado}}</td>
 					            <!-- we will also add show, edit, and delete buttons -->
 					            <td>
 
@@ -32,7 +35,7 @@
 
 					            </td>
 					        </tr>
-					    
+					    	@endforeach
 					    </tbody>
 					</table>
 
